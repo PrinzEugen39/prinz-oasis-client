@@ -1,3 +1,15 @@
+// {
+//   "extends": "next/core-web-vitals"
+// }
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next",
+  "root": true,
+  "rules": {
+    // this allows the use of quotation marks on jsx - this rule i've been using since we needed to set up eslint on vite, because i noticed that vite also don't like quotations marks
+    "react/no-unescaped-entities": "off",
+    "no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ]
+  }
 }
