@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="grid items-center grid-cols-5 text-lg gap-x-24 gap-y-32">
+    <div className="grid items-center grid-cols-5 py-12 text-lg gap-x-24 gap-y-32">
       <div className="col-span-3">
         <h1 className="mb-10 text-4xl font-medium text-accent-400">
           Welcome to The Wild Oasis

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="mt-24">
+    <div className="py-12 mt-24">
       <Image
         src={bgimg}
         fill

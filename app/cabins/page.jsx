@@ -1,16 +1,17 @@
 import CabinCard from "@/app/_components/cabins/CabinCard";
+import { getCabins } from "../_lib/data-service";
 
 export const metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
+export default async function Page() {
   // CHANGE
-  const cabins = [];
+  const cabins = await getCabins();
 
   return (
     <div>
-      <h1 className="mb-5 text-4xl font-medium text-accent-400">
+      <h1 className="py-12 mb-5 text-4xl font-medium text-accent-400">
         Our Luxury Cabins
       </h1>
       <p className="mb-10 text-lg text-primary-200">

@@ -1,6 +1,6 @@
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
-import Header from "./_components/appHeader/Header";
+import Header from "./_components/layout/Header";
 import MaxWidthWrapper from "./_components/MaxWidthWrapper";
 
 export const metadata = {
@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
         className={`antialiased min-h-screen bg-primary-950 text-primary-100 ${josefin.className} flex flex-col relative`}
       >
         <Header />
-        <div className="flex-1 px-8 py-12">
+        <div className="grid flex-1 px-8">
           <main>
-            <MaxWidthWrapper>{children}</MaxWidthWrapper>
+            <MaxWidthWrapper className={"h-full"}>{children}</MaxWidthWrapper>
           </main>
         </div>
       </body>

@@ -13,7 +13,7 @@ function Logo() {
         quality={90}
       />
       <span className="text-xl font-semibold text-primary-100">
-        The Wild Oasis
+        Prinz Wild Oasis
       </span>
     </Link>
   );

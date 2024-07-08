@@ -1,4 +1,9 @@
+import SelectCountry from "@/app/_components/SelectCountry";
 import React from "react";
+
+export const metadata = {
+  title: "Update profile",
+};
 
 export default function Page() {
   // CHANGE
@@ -6,7 +11,7 @@ export default function Page() {
   const nationality = "portugal";
 
   return (
-    <div>
+    <div className="py-12">
       <h2 className="mb-4 text-2xl font-semibold text-accent-400">
         Update your guest profile
       </h2>

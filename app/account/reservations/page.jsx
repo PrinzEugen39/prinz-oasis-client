@@ -1,10 +1,15 @@
+import ReservationCard from "@/app/_components/profile/ReservationCard";
 import React from "react";
+
+export const metadata = {
+  title: "Reservations",
+};
 
 export default function Page() {
   const bookings = [];
 
   return (
-    <div>
+    <div className="py-12">
       <h2 className="text-2xl font-semibold text-accent-400 mb-7">
         Your reservations
       </h2>
