@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
-import MaxWidthWrapper from "../MaxWidthWrapper";
+import MaxWidthWrapper from "../reusable/MaxWidthWrapper";
 
 const Header = () => {
   return (

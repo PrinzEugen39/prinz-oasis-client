@@ -1,7 +1,7 @@
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
-import MaxWidthWrapper from "./_components/MaxWidthWrapper";
+import MaxWidthWrapper from "./_components/reusable/MaxWidthWrapper";
 
 export const metadata = {
   // title: "Prinz Wild Oasis",
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`antialiased min-h-screen bg-primary-950 text-primary-100 ${josefin.className} flex flex-col relative`}
       >
         <Header />
-        <div className="grid flex-1 px-8">
+        <div className="flex-1 px-8">
           <main>
             <MaxWidthWrapper className={"h-full"}>{children}</MaxWidthWrapper>
           </main>

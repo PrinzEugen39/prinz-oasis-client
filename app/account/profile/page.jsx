@@ -1,4 +1,4 @@
-import SelectCountry from "@/app/_components/SelectCountry";
+import SelectCountry from "@/app/_components/reusable/SelectCountry";
 import React from "react";
 
 export const metadata = {
