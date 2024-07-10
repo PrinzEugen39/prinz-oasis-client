@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div>
-      <h1 className="py-12 mb-5 text-4xl font-medium text-accent-400">
+    <div className="py-12">
+      <h1 className="mb-5 text-4xl font-medium text-accent-400">
         Our Luxury Cabins
       </h1>
       <p className="mb-10 text-lg text-primary-200">
