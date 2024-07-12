@@ -2,6 +2,7 @@ import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
 import MaxWidthWrapper from "./_components/reusable/MaxWidthWrapper";
+import { ReservationProvider } from "./_lib/context/ReservationContext";
 
 export const metadata = {
   // title: "Prinz Wild Oasis",
@@ -27,7 +28,9 @@ export default function RootLayout({ children }) {
         <Header />
         <div className="flex-1 px-8">
           <main>
-            <MaxWidthWrapper className={"h-full"}>{children}</MaxWidthWrapper>
+            <ReservationProvider>
+              <MaxWidthWrapper className={"h-full"}>{children}</MaxWidthWrapper>
+            </ReservationProvider>
           </main>
         </div>
       </body>

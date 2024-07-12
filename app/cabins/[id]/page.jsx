@@ -1,7 +1,10 @@
+import ReservationList from "@/app/_components/cabin/ReservationList";
+import Spinner from "@/app/_components/reusable/Spinner";
 import TextExpander from "@/app/_components/reusable/TextExpander";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params }) {
   const cabindetail = await getCabin(params.id);
@@ -22,8 +25,8 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const cabindetail = await getCabin(params.id);
-  const { id, name, maxCapacity, regularPrice, discount, image, description } =
-    cabindetail;
+
+  const { name, maxCapacity, image, description } = cabindetail;
 
   return (
     <div className="max-w-6xl py-12 mx-auto mt-8">
@@ -38,14 +41,12 @@ export default async function Page({ params }) {
         </div>
 
         <div>
-          <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
+          <h3 className="text-accent-100 font-black text-6xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
             Cabin {name}
           </h3>
-
           <p className="mb-10 text-lg text-primary-300">
             <TextExpander>{description}</TextExpander>
           </p>
-
           <ul className="flex flex-col gap-4 mb-7">
             <li className="flex items-center gap-3">
               <UsersIcon className="w-5 h-5 text-primary-600" />
@@ -72,9 +73,12 @@ export default async function Page({ params }) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="mb-10 text-4xl font-semibold text-center text-accent-400">
+          Reserve {name} today. Pay on arrival.
         </h2>
+        <Suspense fallback={<Spinner />}>
+          <ReservationList cabin={cabindetail} />
+        </Suspense>
       </div>
     </div>
   );
