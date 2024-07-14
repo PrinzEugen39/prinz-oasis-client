@@ -1,8 +1,8 @@
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
-import MaxWidthWrapper from "./_components/reusable/MaxWidthWrapper";
 import { ReservationProvider } from "./_lib/context/ReservationContext";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   // title: "Prinz Wild Oasis",
@@ -23,16 +23,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`antialiased min-h-screen bg-primary-950 text-primary-100 ${josefin.className} flex flex-col relative`}
+        className={`antialiased min-h-svh bg-primary-950 text-primary-100 ${josefin.className} flex flex-col relative`}
       >
-        <Header />
-        <div className="flex-1 px-8">
-          <main>
-            <ReservationProvider>
-              <MaxWidthWrapper className={"h-full"}>{children}</MaxWidthWrapper>
-            </ReservationProvider>
-          </main>
-        </div>
+        <SessionProvider>
+          <Header />
+          <div className="z-0 grid flex-1 px-8">
+            <main className="w-full mx-auto max-w-7xl">
+              <ReservationProvider>{children}</ReservationProvider>
+            </main>
+          </div>
+        </SessionProvider>
       </body>
     </html>
   );

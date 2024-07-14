@@ -1,17 +1,25 @@
-import { auth } from "@/app/_lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Logo from "./Logo";
+import { useSession } from "next-auth/react";
+import SpinnerMini from "../reusable/SpinnerMini";
+import SignOutButton from "../auth/SignOutButton";
 
-const Navigation = async () => {
-  const session = await auth();
+const MobileNavList = ({ handleClick }) => {
+  const { data: session, status } = useSession();
+  console.log(session);
   return (
-    <nav className="z-10 hidden text-base lg:text-xl md:block">
-      <ul className="flex items-center gap-8 lg:gap-16">
-        <li>
+    <div className="text-2xl">
+      <ul className="flex flex-col items-center justify-center gap-8 md:hidden">
+        <div onClick={handleClick}>
+          <Logo />
+        </div>
+        <li className="mt-6">
           <Link
             href="/cabins"
             className="transition-colors hover:text-accent-400"
+            onClick={handleClick}
           >
             Cabins
           </Link>
@@ -20,16 +28,23 @@ const Navigation = async () => {
           <Link
             href="/about"
             className="transition-colors hover:text-accent-400"
+            onClick={handleClick}
           >
             About
           </Link>
         </li>
         <li>
-          {session?.user.image ? (
+          {status === "loading" && (
+            <span>
+              <SpinnerMini />
+            </span>
+          )}
+          {status === "authenticated" && session?.user.image && (
             <>
               <Link
                 href="/account"
                 className="flex items-center gap-4 transition-colors hover:text-accent-400"
+                onClick={handleClick}
               >
                 <span>Guest area</span>
                 <Image
@@ -41,19 +56,26 @@ const Navigation = async () => {
                   className="object-cover rounded-full"
                 />
               </Link>
+              <div
+                className="fixed top-[calc(100svh-100px)]"
+              >
+                <SignOutButton />
+              </div>
             </>
-          ) : (
+          )}
+          {status === "unauthenticated" && (
             <Link
               href="/account"
               className="transition-colors hover:text-accent-400"
+              onClick={handleClick}
             >
               Guest area
             </Link>
           )}
         </li>
       </ul>
-    </nav>
+    </div>
   );
 };
 
-export default Navigation;
+export default MobileNavList;
