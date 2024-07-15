@@ -1,15 +1,24 @@
 "use client";
 
-const UpdateProfileForm = ({ children }) => {
+import { updateProfile } from "@/app/_lib/actions/account.action";
+import { usePathname } from "next/navigation";
+
+const UpdateProfileForm = ({ children, guest }) => {
+  const path = usePathname();
+  const { fullName, email, nationalID, nationality, countryFlag } = guest;
   // CHANGE
-  const countryFlag = "pt.jpg";
   return (
     <div>
       {" "}
-      <form className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900">
+      <form
+        className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900"
+        action={updateProfile}
+      >
         <div className="space-y-2">
           <label>Full name</label>
           <input
+            name="fullName"
+            defaultValue={fullName}
             disabled
             className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
           />
@@ -18,6 +27,8 @@ const UpdateProfileForm = ({ children }) => {
         <div className="space-y-2">
           <label>Email address</label>
           <input
+            name="email"
+            defaultValue={email}
             disabled
             className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
           />
@@ -39,8 +50,11 @@ const UpdateProfileForm = ({ children }) => {
         <div className="space-y-2">
           <label htmlFor="nationalID">National ID number</label>
           <input
+            defaultValue={nationalID}
             name="nationalID"
             className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
+            maxLength={18}
+            minLength={6}
           />
         </div>
 

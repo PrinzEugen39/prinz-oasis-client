@@ -8,7 +8,6 @@ import SignOutButton from "../auth/SignOutButton";
 
 const MobileNavList = ({ handleClick }) => {
   const { data: session, status } = useSession();
-  console.log(session);
   return (
     <div className="text-2xl">
       <ul className="flex flex-col items-center justify-center gap-8 md:hidden">
